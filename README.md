@@ -9,7 +9,7 @@ repos](https://github.com/GoogleCloudPlatform) for sample applications and
 scaffolding for other python frameworks and use cases.
 
 Note that this project no longer uses the the SDK-provided Django 1.5 library but
-uses `pip -t` to vendor Django 1.8 into the lib/ folder.
+uses `pip -t` to vendor Django 1.9 into the lib/ folder.
 
 This project is based on the introductory [Django Tutorial](https://docs.djangoproject.com/en/1.8/intro/tutorial01/)
 polls applications.
@@ -65,6 +65,24 @@ See the README file for directions. You'll need python 2.7 and [pip 7.0 or later
    # install globally or within a virtualenv for local testing
    pip install -r requirements-local.txt
    ```
+   
+1. Setup your Python path. Since Django is being added to the lib/ directory along with other vendored dependencies,
+the lib/ directory must be added to your Python import path in order for the libraries to be imported correctly outside
+ of App Engine or dev_appserver, such as when you run the Django management console locally.
+ 
+One way to accomplish this is to use the PYTHONPATH environment variable,
+which might look like this (assuming you are running from the repo's directory):
+
+    export PYTHONPATH=$(pwd)/lib
+    
+The `pwd` command fills in your current directory (appengine-django-skeleton), so that adds the absolute path of
+the lib directory to the Python import path.
+    
+Another approach would be to add it to the import path in `manage.py` like this:
+
+    sys.path.append('lib')
+
+
 1. Create a new CloudSQL instance.
     * From the Google Cloud Console, go to [Storage > CloudSQL> Create Instance](https://console.developers.google.com/project/_/sql/create)
     * Under [Access Control > IP Address](https://console.developers.google.com/project/_/sql/instances/polls/access-control/ip),  Request IPv4 Address. This address will be your HOST for remote access to the
