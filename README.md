@@ -84,13 +84,16 @@ Another approach would be to add it to the import path in `manage.py` like this:
 
 
 1. Create a new CloudSQL instance.
+
+Please note that only 1st generation CloudSQL instance are currently supported for Google App Engine applications.
+
     * From the Google Cloud Console, go to [Storage > CloudSQL> Create Instance](https://console.developers.google.com/project/_/sql/create)
     * Under [Access Control > IP Address](https://console.developers.google.com/project/_/sql/instances/polls/access-control/ip),  Request IPv4 Address. This address will be your HOST for remote access to the
       CloudSQL instance in mysite/settings.py, so replace `<your-database-host>` with this address.
     * Under [Databases](https://console.developers.google.com/project/_/sql/instances/polls/databases), click New Database and create the name for your database in mysite/settings.py. Replace
       `<your-database-name>` with this value.
 
-    At this point, your deployed AppEngine application can access the database, after you replace `<your-project-id>` and
+    At this point, your deployed AppEngine application can access the database, after you replace `<your-project-id>:<your-cloudsql-instance>` and
     `<your-database-name>` in mysite/settings.py. The following instructions are to connect to the same CloudSQL instance
     locally. Alternatively, you could install a local MySQL instance and use that in development.
 
