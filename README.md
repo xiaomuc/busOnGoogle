@@ -85,7 +85,7 @@ Another approach would be to add it to the import path in `manage.py` like this:
 
 1. Create a new CloudSQL instance.
 
-Please note that only 1st generation CloudSQL instance are currently supported for Google App Engine applicatins.
+Please note that only 1st generation CloudSQL instance are currently supported for Google App Engine applications.
 
     * From the Google Cloud Console, go to [Storage > CloudSQL> Create Instance](https://console.developers.google.com/project/_/sql/create)
     * Under [Access Control > IP Address](https://console.developers.google.com/project/_/sql/instances/polls/access-control/ip),  Request IPv4 Address. This address will be your HOST for remote access to the
