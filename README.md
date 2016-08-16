@@ -1,4 +1,5 @@
-## Python Django Skeleton for Google App Engine
+
+# Python Django Skeleton for Google App Engine
 
 A skeleton for building Python applications on Google App Engine with the
 [Django Web Framework](https://www.djangoproject.com/) using
@@ -53,8 +54,8 @@ See the README file for directions. You'll need python 2.7 and [pip 7.0 or later
    git clone https://github.com/GoogleCloudPlatform/appengine-django-skeleton.git
    ```
 1. Install dependencies. There are two types of dependencies. requirements-local.txt contains libraries that are already
-   expressed in app.yaml, like MySQL. Since app.yaml includes them in the runtime, they don't need to be installed to deploy the app, but they do need to be installed locally to run the app locally. You can use `pip install -r requirements-local.txt' to install them on your system or in a virtualenv, but the libraries should not be included in the project directory or 
-   uploaded to App Engine, where instead the bundled version is used. 
+   expressed in app.yaml, like MySQL. Since app.yaml includes them in the runtime, they don't need to be installed to deploy the app, but they do need to be installed locally to run the app locally. You can use `pip install -r requirements-local.txt' to install them on your system or in a virtualenv, but the libraries should not be included in the project directory or
+   uploaded to App Engine, where instead the bundled version is used.
 
    requirements-vendor.txt includes dependencies that should be 'vendored', which means its completely included in the directory at
    time of deployment. This can only be done for pure Python libraries that don't require system libraries. In this case, a recent version of Django is vendored. These vendored libaries can be added
@@ -65,19 +66,19 @@ See the README file for directions. You'll need python 2.7 and [pip 7.0 or later
    # install globally or within a virtualenv for local testing
    pip install -r requirements-local.txt
    ```
-   
+
 1. Setup your Python path. Since Django is being added to the lib/ directory along with other vendored dependencies,
 the lib/ directory must be added to your Python import path in order for the libraries to be imported correctly outside
  of App Engine or dev_appserver, such as when you run the Django management console locally.
- 
+
 One way to accomplish this is to use the PYTHONPATH environment variable,
 which might look like this (assuming you are running from the repo's directory):
 
     export PYTHONPATH=$(pwd)/lib
-    
+
 The `pwd` command fills in your current directory (appengine-django-skeleton), so that adds the absolute path of
 the lib directory to the Python import path.
-    
+
 Another approach would be to add it to the import path in `manage.py` like this:
 
     sys.path.append('lib')
@@ -87,20 +88,26 @@ Another approach would be to add it to the import path in `manage.py` like this:
 
 Please note that only 1st generation CloudSQL instance are currently supported for Google App Engine applications.
 
-    * From the Google Cloud Console, go to [Storage > CloudSQL> Create Instance](https://console.developers.google.com/project/_/sql/create)
-    * Under [Access Control > IP Address](https://console.developers.google.com/project/_/sql/instances/polls/access-control/ip),  Request IPv4 Address. This address will be your HOST for remote access to the
+* From the Google Cloud Console, go to [Storage > CloudSQL> Create Instance](https://console
+ .developers.google.com/project/_/sql/create)
+    
+* Under [Access Control > IP Address](https://console.developers.google.com/project/_/sql/instances/polls/access-control/ip),  Request IPv4 Address. This address will be your HOST for remote access to the
       CloudSQL instance in mysite/settings.py, so replace `<your-database-host>` with this address.
-    * Under [Databases](https://console.developers.google.com/project/_/sql/instances/polls/databases), click New Database and create the name for your database in mysite/settings.py. Replace
+
+* Under [Databases](https://console.developers.google.com/project/_/sql/instances/polls/databases), click New Database and create the name for your database in mysite/settings.py. Replace
+    
       `<your-database-name>` with this value.
 
-    At this point, your deployed AppEngine application can access the database, after you replace `<your-project-id>:<your-cloudsql-instance>` and
-    `<your-database-name>` in mysite/settings.py. The following instructions are to connect to the same CloudSQL instance
-    locally. Alternatively, you could install a local MySQL instance and use that in development.
+At this point, your deployed AppEngine application can access the database, after you replace 
+`<your-project-id>:<your-cloudsql-instance>` and
+`<your-database-name>` in mysite/settings.py. The following instructions are to connect to the same CloudSQL instance
+locally. Alternatively, you could install a local MySQL instance and use that in development.
 
-    * Under [Access Control > Authorization](https://console.developers.google.com/project/_/sql/instances/polls/access-control/authorization) Under "Allowed Networks", click "Add item", and add Network 0.0.0.0/0. This opens up
+* Under [Access Control > Authorization](https://console.developers.google.com/project/_/sql/instances/polls/access-control/authorization) Under "Allowed Networks", click "Add item", and add Network 0.0.0.0/0. This opens up
           access to your CloudSQL instance from any network. Stricter firewall settings should be considered for production
           applications.
-    * Under  [Access Control > Authorization](https://console.developers.google.com/project/_/sql/instances/polls/access-control/users), Click
+
+* Under  [Access Control > Authorization](https://console.developers.google.com/project/_/sql/instances/polls/access-control/users), Click
           "Create user account". Create a username and password and edit mysite/settings.py DATABASES
           to reflect this. Replace `<your-database-user>` and `<your-database-password>` with these variables.
 
