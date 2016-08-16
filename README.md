@@ -29,7 +29,7 @@ The basic skeleton of this project was created using the standard Django command
   * Create appengine_config.py to ensure that libraries vendored into lib/ are on Python's
     sys.path when run.
   * Create [app.yaml](https://cloud.google.com/appengine/docs/python/config/appconfig?hl=en)
-    and setup a static file handler in the same folder htat mysite/settings.py is configured
+    and setup a static file handler in the same folder that mysite/settings.py is configured
     to collect static files. All other routes are directed to Django's WSGI handler.
 
 ## Enable Cloud SQL
