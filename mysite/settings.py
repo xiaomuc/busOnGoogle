@@ -52,6 +52,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'polls',
+    'bus',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -96,8 +97,8 @@ if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'HOST': '/cloudsql/<your-project-id>:<your-cloud-sql-instance>',
-            'NAME': '<your-database-name>',
+            'HOST': '/cloudsql/thermal-works-111304:polls-instance',
+            'NAME': 'polls',
             'USER': 'root',
         }
     }
@@ -105,10 +106,10 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': '<your-database-name>',
-            'USER': '<your-database-user>',
-            'PASSWORD': '<your-database-password>',
-            'HOST': '<your-database-host>',
+            'NAME': 'polls',
+            'USER': 'pythonapp',
+            'PASSWORD': 'pythonapp',
+            'HOST': '173.194.240.208',
             'PORT': '3306',
         }
     }
